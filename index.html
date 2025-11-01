@@ -486,28 +486,34 @@
             </div>
         </section>
     </div>
-    <script>
+<script>
   const fullTitle = "@Jenna.kiwi";
-  let current = "";
   let index = 0;
+  let direction = 1; // 1 = كتابة, -1 = حذف
 
-  function typeTitle() {
-    if (index < fullTitle.length) {
-      current += fullTitle[index];
-      document.title = current;
-      index++;
-      setTimeout(typeTitle, 200); // سرعة الكتابة (كل 200ms)
+  function animateTitle() {
+    document.title = fullTitle.substring(0, index);
+
+    if (direction === 1) {
+      if (index < fullTitle.length) {
+        index++;
+      } else {
+        direction = -1;
+        setTimeout(animateTitle, 1000); // توقف قبل الحذف
+        return;
+      }
     } else {
-      // إعادة التشغيل بعد توقف
-      setTimeout(() => {
-        current = "";
-        index = 0;
-        typeTitle();
-      }, 2000); // توقف لمدة 2 ثانية قبل إعادة الكتابة
+      if (index > 0) {
+        index--;
+      } else {
+        direction = 1;
+      }
     }
+
+    setTimeout(animateTitle, 200); // سرعة الحركة
   }
 
-  typeTitle();
+  animateTitle();
 </script>
     <script>
         // Self-executing anonymous function (IIFE) to prevent global variable pollution
@@ -751,4 +757,5 @@
     </script>
 </body>
 </html>
+
 
