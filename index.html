@@ -486,7 +486,29 @@
             </div>
         </section>
     </div>
+    <script>
+  const fullTitle = "@Jenna.kiwi";
+  let current = "";
+  let index = 0;
 
+  function typeTitle() {
+    if (index < fullTitle.length) {
+      current += fullTitle[index];
+      document.title = current;
+      index++;
+      setTimeout(typeTitle, 200); // سرعة الكتابة (كل 200ms)
+    } else {
+      // إعادة التشغيل بعد توقف
+      setTimeout(() => {
+        current = "";
+        index = 0;
+        typeTitle();
+      }, 2000); // توقف لمدة 2 ثانية قبل إعادة الكتابة
+    }
+  }
+
+  typeTitle();
+</script>
     <script>
         // Self-executing anonymous function (IIFE) to prevent global variable pollution
         (function() {
@@ -729,3 +751,4 @@
     </script>
 </body>
 </html>
+
