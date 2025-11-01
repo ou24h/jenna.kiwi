@@ -487,15 +487,16 @@
         </section>
     </div>
 <script>
-  const fullTitle = "@Jenna.kiwi";
+  const base = "@";
+  const rest = "Jenna.kiwi";
   let index = 0;
   let direction = 1; // 1 = كتابة, -1 = حذف
 
   function animateTitle() {
-    document.title = fullTitle.substring(0, index);
+    document.title = base + rest.substring(0, index);
 
     if (direction === 1) {
-      if (index < fullTitle.length) {
+      if (index < rest.length) {
         index++;
       } else {
         direction = -1;
@@ -757,5 +758,6 @@
     </script>
 </body>
 </html>
+
 
 
